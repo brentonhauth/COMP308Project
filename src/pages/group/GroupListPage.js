@@ -1,7 +1,8 @@
 import React from "react";
-import * as api from '../api/Group';
+import * as api from '../../api/Group';
 import { Container } from "react-bootstrap";
-import Toast from "../helpers/Toast";
+import Toast from "../../helpers/Toast";
+import GroupCard from '../../components/GroupCard';
 
 export default class GroupListPage extends React.Component {
   constructor(props) {
@@ -29,9 +30,7 @@ export default class GroupListPage extends React.Component {
     return (
       <Container>
         {groups.map((group, index) => (
-          <Container key={index}>
-            {JSON.stringify(group)}
-          </Container>
+          <GroupCard group={group} key={index} />
         ))}
       </Container>
     );

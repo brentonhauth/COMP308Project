@@ -32,7 +32,7 @@ async function send(method, url, data) {
 }
 
 
-export default {
+const Request = {
 
   /**
    * @param {string} name
@@ -43,6 +43,11 @@ export default {
       headers[name] = value;
     }
     return headers[name];
+  },
+
+  authorization(value) {
+    value = typeof value === 'string' ? `Bearer\x20${value}` : null;
+    return Request.header('Authorization', value);
   },
 
   /**
@@ -62,3 +67,5 @@ export default {
    */
   put: (url, body) => send("PUT", url, body)
 };
+
+export default Request;

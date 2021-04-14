@@ -1,4 +1,4 @@
-import Navbar from 'react-bootstrap/Navbar';
+import RBNavbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
 import React from 'react';
@@ -24,9 +24,9 @@ class NavBar extends React.Component {
   render() {
     const me = this.props.me;
     return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+      <RBNavbar bg="light" expand="lg">
+        <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
+        <RBNavbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {me ? <>
               <Link to={`/students/${me._id}`} className="nav-link">{}</Link>
@@ -37,8 +37,8 @@ class NavBar extends React.Component {
               <Link to="/groups" className="nav-link">Groups</Link>
             </>}
           </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+        </RBNavbar.Collapse>
+      </RBNavbar>
     );
   }
 }

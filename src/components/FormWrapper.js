@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Table, Form, Button } from 'react-bootstrap';
+import Toast from '../helpers/Toast';
 
 
 /**
@@ -23,6 +24,7 @@ export default class FormWrapper extends React.Component {
     try {
       await this.props.onSubmit(data);
     } catch (e) {
+      Toast.error(e);
     }
     this.setState({ sending: false });
   }
