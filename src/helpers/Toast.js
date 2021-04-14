@@ -3,7 +3,7 @@ import Toastify from 'toastify-js';
 const SUCCESS_COLOR = '#5cb85c';
 const ERROR_COLOR = '#d9534f';
 
-function toast(text, backgroundColor) {
+function show(text, backgroundColor) {
   Toastify({
     text,
     backgroundColor,
@@ -12,12 +12,18 @@ function toast(text, backgroundColor) {
   }).showToast();
 }
 
-export default {
+const Toast = {
   success(text) {
-    toast(text, SUCCESS_COLOR);
+    show(text, SUCCESS_COLOR);
   },
 
-  error(text) {
-    toast(text, ERROR_COLOR);
+  error(err) {
+    if (typeof err === 'string') {
+      show(err, ERROR_COLOR)
+    } else {
+      show(err.message || String(err), ERROR_COLOR);
+    }
   }
 };
+
+export default Toast;

@@ -23,8 +23,9 @@ const instance = axios.create({
 
 async function send(method, url, data) {
   const res = await instance({ url, method, headers, data });
-  if (res.status === 200) {
-    return _get(res, 'data.data', res.data);
+  const code = _get(res, 'data.meta.code', 200);
+  if (res.status === 200 && code === 200) {
+    return _get(res, 'data.data', res.data) || {};
   }
   const msg = _get(res, 'data.meta.msg') || res.statusText;
   throw new Error(msg);

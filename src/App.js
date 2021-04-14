@@ -1,11 +1,13 @@
+import './styles/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'toastify-js/src/toastify.css'
+
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 import Cookies from 'js-cookie';
 import config from './config';
-
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Router from './navigation/Router';
 
 class App extends React.Component {
   constructor(props) {

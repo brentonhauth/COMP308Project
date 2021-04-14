@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
 import React from 'react';
 // import { connect } from 'react-redux';
-// import * as api from '../api/Account';
+import * as api from '../api/Account';
 // import { logout } from '../redux/Actions';
 import Toast from '../helpers/Toast';
 
@@ -34,6 +34,7 @@ class NavBar extends React.Component {
             </> : <>
               <Link to="/signup" className="nav-link">Signup</Link>
               <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/groups" className="nav-link">Groups</Link>
             </>}
           </Nav>
         </Navbar.Collapse>

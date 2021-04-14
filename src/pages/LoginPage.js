@@ -6,6 +6,7 @@ import Toast from '../helpers/Toast';
 import { connect } from 'react-redux';
 import { login } from '../redux/Actions';
 import { Redirect } from 'react-router-dom';
+import Request from '../helpers/Request';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -17,10 +18,11 @@ class LoginPage extends React.Component {
   async tryLogin(data) {
     try {
       const res = await api.login(data);
-      Toast.success('Successfully logged in');
       this.props.login(res.user, res.token);
+      Request.header('Authorization', `Bearer\x20${res.token}`);
+      Toast.success('Successfully logged in');
     } catch (err) {
-      Toast.error(err.message);
+      Toast.error(err);
     }
   }
 
@@ -37,7 +39,7 @@ class LoginPage extends React.Component {
           <hr></hr>
           <FormWrapper onSubmit={this.tryLogin}>
             {sending => <>
-              <Form.Control type="email" placeholder="Email" name="username" required />
+              <Form.Control type="email" placeholder="Email" name="email" required />
               <Form.Control type="password" placeholder="Password" name="password" required />
               <Button variant="success" type="submit" disabled={sending}>Login</Button>
             </>}
@@ -48,6 +50,8 @@ class LoginPage extends React.Component {
   }
 }
 
+
+// export default LoginPage;
 
 const mapStateToProps = (state, ownProps) => ({ ...state });
 const mapDispatchToProps = { login };

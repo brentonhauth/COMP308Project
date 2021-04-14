@@ -1,4 +1,4 @@
-import '../styles/pagestyles.css'
+import '../styles/signup.css'
 
 import React from 'react';
 import { signup } from '../api/Account';
@@ -33,7 +33,7 @@ export default class SignupPage extends React.Component {
     //   return <Redirect to="/" />
     // }
     return (
-      <div class="signUpForm-v2">
+      <div className="signUpForm-v2">
         <h2>Sign Up</h2>
         <hr></hr>
         <FormWrapper onSubmit={this.trySignup}>
