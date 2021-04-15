@@ -21,8 +21,8 @@ const instance = axios.create({
 });
 
 
-async function send(method, url, data) {
-  const res = await instance({ url, method, headers, data });
+async function send(method, url, data, more={}) {
+  const res = await instance({ url, method, headers, data, ...more });
   const code = _get(res, 'data.meta.code', 200);
   if (res.status === 200 && code === 200) {
     return _get(res, 'data.data', res.data) || {};
@@ -65,7 +65,9 @@ const Request = {
    * @param {string} url
    * @param {*} body
    */
-  put: (url, body) => send("PUT", url, body)
+  put: (url, body) => send("PUT", url, body),
+
+  send,
 };
 
 export default Request;

@@ -3,11 +3,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'toastify-js/src/toastify.css'
 
 import React from 'react';
-import Spinner from 'react-bootstrap/Spinner';
-import Container from 'react-bootstrap/Container';
 import Cookies from 'js-cookie';
 import config from './config';
+import * as api from './api/Account';
 import Router from './navigation/Router';
+import Request from './helpers/Request';
+import Loading from './components/Loading';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,20 +27,16 @@ class App extends React.Component {
       return void this.setState({ loading: false });
     }
     try {
-      // const student = await api.touch();
-      //this.props.login(student, cookie);
+      const user = await api.touch();
+      this.props.login(user, cookie);
+      Request.authorization(cookie);
     } catch (e) {}
     this.setState({ loading: false });
   }
 
   render() {
     if (this.state.loading) {
-      return (
-        <Container className="mt-3 mx-auto">
-          <Spinner animation="border" role="status">
-          </Spinner>
-        </Container>
-      );
+      return <Loading />
     }
 
     return (

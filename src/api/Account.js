@@ -17,7 +17,10 @@ export async function logout() {
 }
 
 export async function touch() {
-  const res = await Request.get('/account/touch');
+  // const res = await Request.get('/account/touch');
+  const res = await Request.send('GET', '/account/touch', null, {
+    withCredentials: true
+  });
   return res;
 }
 

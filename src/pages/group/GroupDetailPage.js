@@ -2,7 +2,11 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import * as api from '../../api/Group';
+import GroupCard from '../../components/GroupCard';
 import Toast from '../../helpers/Toast';
+import SortTable from '../../components/SortTable';
+import Loading from '../../components/Loading';
+import _get from 'lodash.get';
 
 
 class $GroupDetailPage extends React.Component {
@@ -24,13 +28,25 @@ class $GroupDetailPage extends React.Component {
   }
 
   render() {
-    if (!this.state.group) {
-      return null;
+    const group = this.state.group;
+    if (!group) {
+      return <Loading />
     }
 
     return (
       <Container>
-        {JSON.stringify(this.state.group)}
+        <GroupCard group={group} />
+        <SortTable data={_get(group, 'members', [])}>
+          <SortTable.Col heading="ID" sort="_id">
+            {m => <small>{m._id}</small>}
+          </SortTable.Col>
+          <SortTable.Col heading="Name" sort="lastName">
+            {m => <span>{m.firstName} {m.lastName}</span>}
+          </SortTable.Col>
+        </SortTable>
+          {/* <SortTable.Col heading="ID" sort="_id">
+            {m => <small>{}</small>}
+          </SortTable.Col> */}
       </Container>
     );
   }
