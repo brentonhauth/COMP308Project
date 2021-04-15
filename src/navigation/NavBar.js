@@ -2,46 +2,43 @@ import RBNavbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Link } from 'react-router-dom'
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import * as api from '../api/Account';
-// import { logout } from '../redux/Actions';
+import { logout } from '../redux/Actions';
 import Toast from '../helpers/Toast';
 
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onLogoutClick = this.onLogoutClick.bind(this);
-  }
-
-  onLogoutClick() {
+function NavBar(props) {
+  function onLogoutClick() {
     api.logout().then(() => {
-      this.props.logout();
+      props.logout();
     }).catch(err => {
-      Toast.error(err.message);
+      props.logout(); // temp
     });
   }
-
-  render() {
-    const me = this.props.me;
-    return (
-      <RBNavbar bg="light" expand="lg">
-        <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
-        <RBNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            {me ? <>
-              <Link to={`/students/${me._id}`} className="nav-link">{}</Link>
-              <Link to="/" className="nav-link" onClick={this.onLogoutClick}>Logout</Link>
-            </> : <>
-              <Link to="/signup" className="nav-link">Signup</Link>
-              <Link to="/login" className="nav-link">Login</Link>
-              <Link to="/groups" className="nav-link">Groups</Link>
-            </>}
-          </Nav>
-        </RBNavbar.Collapse>
-      </RBNavbar>
-    );
-  }
+  const me = props.me;
+  const role = (me && me.role) || null;
+  return (
+    <RBNavbar bg="light" expand="lg">
+      <RBNavbar.Toggle aria-controls="basic-navbar-nav" />
+      <RBNavbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          {role === 'U' ? <>
+            <Link to={'/profile'} className="nav-link">Profile</Link>
+            <Link to="/login" className="nav-link" onClick={onLogoutClick}>Logout</Link>
+            <Link to="/groups" className="nav-link">Groups</Link>
+            <Link to="/challenges" className="nav-link">Challenges</Link>
+          </> : <>
+            <Link to="/signup" className="nav-link">Signup</Link>
+            <Link to="/login" className="nav-link">Login</Link>
+          </>}
+        </Nav>
+      </RBNavbar.Collapse>
+    </RBNavbar>
+  );
 }
 
 
-export default NavBar
+const mapStateToProps = (state, ownProps) => ({ ...state });
+const mapDispatchToProps = { logout };
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

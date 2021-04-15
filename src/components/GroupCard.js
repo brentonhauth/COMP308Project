@@ -33,16 +33,15 @@ export default class GroupCard extends React.Component {
     const group = this.props.group || {};
     const coach = group.coach;
     return (
-      <Card className="mx-auto w-75">
+      <Card className="mx-auto w-75 mb-4">
         <Card.Header className="d-flex justify-content-between">
-          <Link to={`/groups/${group._id}`} className="h3 text-dark">[{group._id}] {group.name}</Link>
+          <Link to={`/groups/${group._id}`} className="h4 text-dark">[{group._id}] {group.name}</Link>
           <Button
             onClick={this.tryLeaveGroup}
             variant="danger"
-            className="h-50 mr-0"
+            className="h-50 mr-0 w-10"
             size="sm"
             disabled={this.state.disableLeave/*todo: disable if is coach */}
-            style={{width:'10%'}}
           >Leave</Button>
         </Card.Header>
         <Card.Body>

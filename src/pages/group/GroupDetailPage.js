@@ -7,6 +7,7 @@ import Toast from '../../helpers/Toast';
 import SortTable from '../../components/SortTable';
 import Loading from '../../components/Loading';
 import _get from 'lodash.get';
+import EnsureLoggedIn from '../../components/EnsureLoggedIn';
 
 
 class $GroupDetailPage extends React.Component {
@@ -52,10 +53,12 @@ class $GroupDetailPage extends React.Component {
   }
 }
 
-function GroupDetailPage() {
+export default function GroupDetailPage() {
   // Workaround for using params in stateful component
   const { id } = useParams();
-  return <$GroupDetailPage id={id} />
+  return (
+    <EnsureLoggedIn>
+      <$GroupDetailPage id={id} />
+    </EnsureLoggedIn>
+  );
 }
-
-export default GroupDetailPage;

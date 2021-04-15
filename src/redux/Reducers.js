@@ -9,7 +9,11 @@ const INITIAL = {
 const Reducers = {
   [ActionTypes.LOGIN]: (state, payload) => {
     return { ...state, ...payload };
-  }
+  },
+
+  [ActionTypes.LOGOUT]: (state, payload) => {
+    return { ...state, ...payload };
+  },
 };
 
 

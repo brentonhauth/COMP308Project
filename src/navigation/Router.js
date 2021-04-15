@@ -5,6 +5,8 @@ import SignupPage from '../pages/SignupPage';
 import GroupListPage from '../pages/group/GroupListPage';
 import GroupDetailPage from "../pages/group/GroupDetailPage";
 import PasswordResetPage from '../pages/PasswordResetPage';
+import ChallengeListPage from '../pages/challenge/ChallengeListPage';
+import ChallengeDetailPage from '../pages/challenge/ChallengeDetailPage';
 
 export default function Router() {
   return (
@@ -14,6 +16,8 @@ export default function Router() {
       <Route path="/signup" exact component={() => <SignupPage />} />
       <Route path="/groups" exact component={() => <GroupListPage />} />
       <Route path="/groups/:id" exact component={() => <GroupDetailPage />} />
+      <Route path="/challenges" exact component={() => <ChallengeListPage />} />
+      <Route path="/challenges/:id" exact component={() => <ChallengeDetailPage />} />
       <Route path="/passreset" exact component={() => <PasswordResetPage />} />
     </BrowserRouter>
   );
