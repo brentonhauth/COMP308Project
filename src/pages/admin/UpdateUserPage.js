@@ -61,7 +61,7 @@ class UpdateUserPage extends React.Component {
             </p>
             <p className="double">
               <label htmlFor="firstName" className="floatLabel" type="text">First Name</label>                
-              <input type="text" placeholder= {"John"} name="firstName" required/>
+              <input type="text" placeholder= {user.firstName} name="firstName" required/>
 
               <label htmlFor="lastName" className="floatLabel" type="text">Last Name</label>                
               <input type="text" placeholder="Doe" name="lastName" required/>
