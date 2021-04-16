@@ -8,6 +8,7 @@ import PasswordResetPage from '../pages/PasswordResetPage';
 import ChallengeListPage from '../pages/challenge/ChallengeListPage';
 import ChallengeDetailPage from '../pages/challenge/ChallengeDetailPage';
 import ProfilePage from "../pages/ProfilePage";
+import SearchUserPage from "../pages/admin/SearchUserPage";
 
 export default function Router() {
   return (
@@ -21,6 +22,7 @@ export default function Router() {
       <Route path="/challenges" exact component={() => <ChallengeListPage />} />
       <Route path="/challenges/:id" exact component={() => <ChallengeDetailPage />} />
       <Route path="/passreset" exact component={() => <PasswordResetPage />} />
+      <Route path="/searchUser" exact component={() => <SearchUserPage />} />
     </BrowserRouter>
   );
 }
