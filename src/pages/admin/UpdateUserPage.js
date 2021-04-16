@@ -21,8 +21,7 @@ class UpdateUserPage extends React.Component {
     const fetchData = async () => {
       try
       {
-          //console.log(props);
-          const foundUser = await api.searchUserById(this.props.id);
+          const foundUser = await api.searchUserById(this.props.match.params.id);
           this.setState({
             user: foundUser
           });
@@ -39,7 +38,7 @@ class UpdateUserPage extends React.Component {
 
   async tryUpdate(data) {
     try {
-      const value = await updateUser(this.props.id,data);
+      const value = await updateUser(this.props.match.params.id,data);
       Toast.success('SUCCESS');
       this.setState({ successful: true });
     } catch (err) {
@@ -67,44 +66,30 @@ class UpdateUserPage extends React.Component {
               <input type="text" defaultValue={user.firstName} name="firstName" required/>
 
               <label htmlFor="lastName" className="floatLabel" type="text">Last Name</label>                
-              <input type="text" placeholder="Doe" name="lastName" required/>
+              <input type="text" defaultValue={user.lastName} name="lastName" required/>
             </p>
             <p>
               <label htmlFor="email" className="floatLabel" type="text">Email</label>                
-              <input type="text" placeholder="someone@example.com" name="email" required/>
-            </p>
-            <hr></hr>
-            <p className="tableSection">
-              Account Information
-            </p>
-            <p className="double">
-              <label htmlFor="studentNumber" className="floatLabel" type="text">Student Number</label>                
-              <input type="text" placeholder="300941374" name="studentNumber" required/>
-
-              <label htmlFor="program" className="floatLabel" type="text">Program</label>                
-              <input type="text" placeholder="Game Programming" name="program" required/>
+              <input type="text" defaultValue={user.email} name="email" required/>
             </p>
             <p>
-              <label htmlFor="phone" className="floatLabel" type="text">Phone</label>                
-              <input type="text" placeholder="1111234567" name="phone" required/>
-            </p>
-            <hr></hr>
-            <p className="tableSection">
-              Address
-            </p>
-            <p className="double">
-              <label htmlFor="address" className="floatLabel" type="text">Address</label>                
-              <input type="text" placeholder="47 Some Street" name="address" required/>
-
-              <label htmlFor="city" className="floatLabel" type="text">City</label>                
-              <input type="text" placeholder="Toronto" name="city" required/>
+              <label htmlFor="role" className="floatLabel" type="text">Role</label>                
+              <input type="text" defaultValue={user.role} name="role" required/>
             </p>
             <p>
               <label htmlFor="password" className="floatLabel" type="text">Password</label>                
-              <input type="password" placeholder="*******" name="password" required/>
+              <input type="text" defaultValue={user.password} name="password" required/>
             </p>
-            
-            <button disabled={sending} type="submit">Update</button>
+            <p>
+              <label htmlFor="age" className="floatLabel" type="text">Age</label>                
+              <input type="text" defaultValue={user.age} name="age" required/>
+            </p>
+            <p>
+              <label htmlFor="gender" className="floatLabel" type="text">Gender</label>                
+              <input type="text" defaultValue={user.gender} name="gender" required/>
+            </p>
+            <hr></hr>
+            <button type="submit">Update</button>
           </>}
         </FormWrapper>
       </div>
