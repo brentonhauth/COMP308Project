@@ -30,4 +30,7 @@ function EnsureLoggedIn({ me, redirect, message, flipped=false, children }={}) {
 
 const mapStateToProps = (state, ownProps) => ({ ...state });
 
+/**
+ * will redirect the user if they are not logged in
+ */
 export default connect(mapStateToProps, null)(EnsureLoggedIn);
