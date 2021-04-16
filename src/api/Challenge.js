@@ -19,3 +19,8 @@ export async function getChallenge(challengeId) {
   const res = await Request.get(`/challenge/${challengeId}`);
   return res;
 }
+
+export async function getChallengeProgress(challengeId) {
+  const res = await Request.get(`/challenge/progress/${challengeId}`);
+  return res;
+}

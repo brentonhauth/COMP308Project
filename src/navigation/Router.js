@@ -11,6 +11,11 @@ import ProfilePage from "../pages/ProfilePage";
 import SearchUserPage from "../pages/admin/SearchUserPage";
 import UpdateUserPage from "../pages/admin/UpdateUserPage";
 
+import RepChallengeListPage from "../pages/rep/RepChallengeListPage";
+import RepEditChallengePage from "../pages/rep/RepEditChallengePage";
+import RepRewardListPage from "../pages/rep/RepRewardListPage";
+import RepEditRewardPage from "../pages/rep/RepEditRewardPage";
+
 export default function Router() {
   return (
     <BrowserRouter>
@@ -25,6 +30,10 @@ export default function Router() {
       <Route path="/passreset" exact component={() => <PasswordResetPage />} />
       <Route path="/searchUser" exact component={() => <SearchUserPage />} />
       <Route path="/admin/user/:id" exact component={() => <UpdateUserPage />} />
+      <Route path="/rep/challenges" exact component={() => <RepChallengeListPage />} />
+      <Route path="/rep/challenges/:id" exact component={() => <RepEditChallengePage />} />
+      <Route path="/rep/rewards" exact component={() => <RepRewardListPage />} />
+      <Route path="/rep/rewards/:id" exact component={() => <RepEditRewardPage />} />
     </BrowserRouter>
   );
 }
