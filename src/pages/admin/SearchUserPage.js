@@ -7,7 +7,6 @@ import Toast from '../../helpers/Toast';
 import { Container, FormControl } from 'react-bootstrap';
 import FormWrapper from '../../components/FormWrapper';
 
-
 export default class SearchUserPage extends React.Component {
   constructor(props) {
     super(props);
@@ -51,13 +50,23 @@ export default class SearchUserPage extends React.Component {
           <FormWrapper onSubmit={this.trySearchingUser}>
             {() => (
               <Container>
-                {/** implement FormControl (with name="email") & Button (with type="submit") for searching */}
+                {/* * implement FormControl (with name="email") & Button (with type="submit") for searching */}
+                <label htmlFor="email" className="floatLabel" type="text">User Email</label>
+                <input type="text" placeholder="Type user email" name="email" required/>
+                <button type="submit">Search</button>
               </Container>
             )}
           </FormWrapper>
 
           {/* Display 'foundUser' how you like, I've used JSON.stringify as a temporary solution */}
-          <div>{JSON.stringify(foundUser)}</div>
+          {<div>{JSON.stringify(foundUser)}</div>}
+          {foundUser.length !== 0
+          ?<>
+          <div>
+            EMAILLLL:{JSON.stringify(foundUser)}{/*It's undefined somehow....*/}
+          </div>
+          </>
+          :<></>}
         </Container>
       </EnsureLoggedIn>
     );
