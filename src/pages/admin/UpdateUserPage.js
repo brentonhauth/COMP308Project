@@ -20,10 +20,10 @@ class UpdateUserPage extends React.Component {
         {
             //console.log(props);
             const foundUser = await api.searchUserById(props.match.params.id);
+            console.log(foundUser);
             this.setState({
               user: foundUser
             });
-            console.log(foundUser);
         }
         catch(e)
         {
@@ -61,7 +61,7 @@ class UpdateUserPage extends React.Component {
             </p>
             <p className="double">
               <label htmlFor="firstName" className="floatLabel" type="text">First Name</label>                
-              <input type="text" placeholder= {user.firstName} name="firstName" required/>
+              <input type="text" defaultValue={user.firstName} name="firstName" required/>
 
               <label htmlFor="lastName" className="floatLabel" type="text">Last Name</label>                
               <input type="text" placeholder="Doe" name="lastName" required/>
