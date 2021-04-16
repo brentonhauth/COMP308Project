@@ -47,7 +47,7 @@ class SearchUserPage extends React.Component {
     const foundUser = this.state.foundUser;
     const showDetail = (id) => {
       this.props.history.push({
-        pathname: '/admin/user/:id' + id
+        pathname: '/admin/user/' + id
       });
     }
     return(

@@ -11,3 +11,9 @@ export async function updateUser(userId, body)
     const res = await Request.post('/admin/user/' + userId, body);
     return res;
 }
+export async function searchUserById(userId,body) {
+  const res = await Request.get('/admin/user/' + userId, body);
+  console.log('Res: ' + res);
+  return res;
+
+}

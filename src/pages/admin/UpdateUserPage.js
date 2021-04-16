@@ -6,6 +6,7 @@ import FormWrapper from '../../components/FormWrapper';
 import Toast from '../../helpers/Toast';
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import * as api from '../../api/Admin';
 
 class UpdateUserPage extends React.Component {
   constructor(props) {
@@ -14,6 +15,23 @@ class UpdateUserPage extends React.Component {
         user:{}
     };
     this.tryUpdate = this.tryUpdate.bind(this);
+    const fetchData = async () => {
+        try
+        {
+            //console.log(props);
+            const foundUser = await api.searchUserById(props.match.params.id);
+            this.setState({
+              user: foundUser
+            });
+            console.log(foundUser);
+        }
+        catch(e)
+        {
+            Toast.error(e);
+            console.log(e);
+        }
+      };
+      fetchData();
   }
 
   async tryUpdate(data) {
@@ -27,10 +45,7 @@ class UpdateUserPage extends React.Component {
   }
 
   render() {
-    if (this.state.successful) {
-      return <Redirect to="/login" />;
-    }
-
+    const user = this.state.user;
     // if (this.props.me) {
     //   Toast.error('Already logged in');
     //   return <Redirect to="/" />
@@ -46,7 +61,7 @@ class UpdateUserPage extends React.Component {
             </p>
             <p className="double">
               <label htmlFor="firstName" className="floatLabel" type="text">First Name</label>                
-              <input type="text" placeholder="John" name="firstName" required/>
+              <input type="text" placeholder= {"John"} name="firstName" required/>
 
               <label htmlFor="lastName" className="floatLabel" type="text">Last Name</label>                
               <input type="text" placeholder="Doe" name="lastName" required/>
