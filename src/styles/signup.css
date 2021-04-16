@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-button {
+.signUpForm-v2 button {
   background-color: #9c85b1;
   color: rgb(193, 196, 37);
   padding: 10px 20px;
@@ -32,11 +32,12 @@ button {
   font-weight: bold;
   border: 0px;
 }
-button:hover {
+.signUpForm-v2 button:hover {
   opacity:1;
 }
 
-input[type=text], input[type=password] {
+.signUpForm-v2 input[type=text],
+.signUpForm-v2 input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;

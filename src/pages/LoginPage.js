@@ -5,7 +5,7 @@ import FormWrapper from '../components/FormWrapper';
 import Toast from '../helpers/Toast';
 import { connect } from 'react-redux';
 import { login } from '../redux/Actions';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Request from '../helpers/Request';
 
 class LoginPage extends React.Component {
@@ -44,14 +44,13 @@ class LoginPage extends React.Component {
               <Button variant="success" type="submit" disabled={sending}>Login</Button>
             </>}
           </FormWrapper>
+          <Link to="/passreset">Forgot password?</Link>
         </Container>
       </div>
     );
   }
 }
 
-
-// export default LoginPage;
 
 const mapStateToProps = (state, ownProps) => ({ ...state });
 const mapDispatchToProps = { login };
