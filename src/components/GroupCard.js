@@ -2,12 +2,13 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _get from 'lodash.get';
-
+import { connect } from 'react-redux';
+import { joinGroup, leaveGroup } from '../redux/Actions';
 import * as api from '../api/Group';
 import Toast from '../helpers/Toast';
 
 
-export default class GroupCard extends React.Component {
+class GroupCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = { disableLeave: false };
@@ -32,6 +33,9 @@ export default class GroupCard extends React.Component {
   render() {
     const group = this.props.group || {};
     const coach = group.coach;
+    const coachId = typeof coach === 'string' ? coach : _get(coach, '_id');
+    const myId = _get(this.props, 'me._id');
+
     return (
       <Card className="mx-auto w-75 mb-4">
         <Card.Header className="d-flex justify-content-between">
@@ -41,7 +45,7 @@ export default class GroupCard extends React.Component {
             variant="danger"
             className="h-50 mr-0 w-10"
             size="sm"
-            disabled={this.state.disableLeave/*todo: disable if is coach */}
+            disabled={this.state.disableLeave || coachId === myId}
           >Leave</Button>
         </Card.Header>
         <Card.Body>
@@ -63,3 +67,9 @@ export default class GroupCard extends React.Component {
     );
   }
 }
+
+
+const mapStateToProps = (state, ownProps) => ({ ...state });
+const mapDispatchToProps = { joinGroup, leaveGroup };
+
+export default connect(mapStateToProps, mapDispatchToProps)(GroupCard);

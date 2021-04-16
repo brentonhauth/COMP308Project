@@ -5,7 +5,7 @@ import FormWrapper from '../components/FormWrapper';
 import Toast from '../helpers/Toast';
 import { connect } from 'react-redux';
 import { login } from '../redux/Actions';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Request from '../helpers/Request';
 
 class LoginPage extends React.Component {
@@ -39,19 +39,18 @@ class LoginPage extends React.Component {
           <hr></hr>
           <FormWrapper onSubmit={this.tryLogin}>
             {sending => <>
-              <Form.Control type="email" placeholder="Email" name="email" required />
-              <Form.Control type="password" placeholder="Password" name="password" required />
-              <Button variant="success" type="submit" disabled={sending}>Login</Button>
+              <Form.Control type="email" className="rounded-pill my-3" placeholder="Email" name="email" required />
+              <Form.Control type="password" className="rounded-pill my-3" placeholder="Password" name="password" required />
+              <Button variant="success" type="submit" className="rounded-pill mt-2 w-100" disabled={sending}>Login</Button>
             </>}
           </FormWrapper>
+          <Link to="/passreset">Forgot password?</Link>
         </Container>
       </div>
     );
   }
 }
 
-
-// export default LoginPage;
 
 const mapStateToProps = (state, ownProps) => ({ ...state });
 const mapDispatchToProps = { login };

@@ -7,6 +7,7 @@ import * as api from '../../api/Challenge';
 import Loading from '../../components/Loading';
 import Toast from '../../helpers/Toast';
 import { Container } from 'react-bootstrap';
+import RewardCard from '../../components/RewardCard';
 
 class $ChallengeDetailPage extends React.Component {
   constructor(props) {
@@ -44,6 +45,7 @@ class $ChallengeDetailPage extends React.Component {
     return (
       <Container>
         <ChallengeCard challenge={challenge} />
+        <RewardCard reward={challenge.reward} />
       </Container>
     );
   }

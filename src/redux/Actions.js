@@ -21,3 +21,26 @@ export const logout = () => ({
     token: null,
   }
 });
+
+/** @returns {ActionObject} */
+export const refresh = () => ({
+  type: ActionTypes.REFRESH,
+  payload: null,
+});
+
+/** @returns {ActionObject} */
+export const reset = () => ({
+  type: ActionTypes.RESET,
+  payload: null,
+});
+
+/** @returns {ActionObject} */
+export const joinGroup = (group) => ({
+  type: ActionTypes.JOIN_GROUP,
+  payload: group
+});
+/** @returns {ActionObject} */
+export const leaveGroup = (group) => ({
+  type: ActionTypes.LEAVE_GROUP,
+  payload: group
+});

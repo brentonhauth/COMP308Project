@@ -40,3 +40,11 @@
 .w-10 {
   width: 10%;
 }
+
+.toast-success {
+  background-color: #5cb85c !important;
+}
+
+.toast-error {
+  background-color: #d9534f !important;
+}

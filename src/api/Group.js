@@ -18,6 +18,11 @@ export async function createGroup({ name }={}) {
   return res;
 }
 
+export async function createGroupActivity(groupId, data) {
+  const res = await Request.post(`/group/${groupId}/activity/create`, data);
+  return res;
+}
+
 export async function getMyGroups() {
   const res = await Request.get('/group/mine');
   return res;

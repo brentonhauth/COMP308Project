@@ -53,34 +53,35 @@ class $GroupListPage extends React.Component {
     }
 
     return (
-      <Container>
-        <FormWrapper onSubmit={this.tryJoinGroup}>
-          {sending => <>
-            <Row>
-              <Col>
-                <FormControl type="text" placeholder="Group Code" name="groupCode" required />
-              </Col>
-              <Col>
-                <Button variant="success" type="submit" disabled={sending}>JOIN</Button>
-              </Col>
-            </Row>
-          </>}
-        </FormWrapper>
-        <h3>My Groups</h3>
+      <Container className="py-4">
+        <Row>
+          <Col className="h3">
+            My Groups&nbsp;&nbsp;
+            <Button
+                variant="outline-info"
+                size="sm"
+                onClick={() => this.setState({ showCreateGroup: true })}
+              >Create</Button>
+          </Col>
+          <Col>
+            <FormWrapper onSubmit={this.tryJoinGroup}>
+              {sending => <>
+                <Row>
+                  <Col sm={4}>
+                    <FormControl type="text" placeholder="Group Code" name="groupCode" required />
+                  </Col>
+                  <Col>
+                    <Button variant="success" type="submit" disabled={sending}>JOIN</Button>
+                  </Col>
+                </Row>
+              </>}
+            </FormWrapper>
+          </Col>
+        </Row>
+        <hr></hr>
         {groups.map((group, index) => (
           <GroupCard group={group} key={index} />
         ))}
-        <Row className="align-items-center">
-          <Col className="w-100">
-            <Button
-              variant="light"
-              size="lg"
-              className="mx-auto"
-              style={{width:'200px'}}
-              onClick={() => this.setState({ showCreateGroup: true })}
-            >+</Button>
-          </Col>
-        </Row>
         <CreateGroupDialog show={this.state.showCreateGroup} onClose={this.onCreateGroupClose} />
       </Container>
     );
