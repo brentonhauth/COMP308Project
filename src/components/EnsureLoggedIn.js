@@ -11,19 +11,27 @@ let call = true;
  * @param {{
  * me: any,
  * redirect: string,
+ * role?: 'U'|'A'|'C'
  * children: React.ReactNode,
  * message?: string,
  * flipped?: boolean,
  * }} props
  */
-function EnsureLoggedIn({ me, redirect, message, flipped=false, children }={}) {
+function EnsureLoggedIn({ me, redirect, message, role, flipped=false, children }={}) {
+  const myRole = (me && me.role) || null;
   if (!me === !!flipped) {
-    return children;
+    if (role) {
+      if (myRole === role) {
+        return children;
+      }
+    } else {
+      return children;
+    }
   }
+
   if (call) {
     Toast.error(message || (flipped ? DEFAULT_FLIPPED : DEFAULT_MESSAGE));
-  }
-  call = !call;
+  }; call = !call;
   return <Redirect to={redirect || '/login'} />
 }
 
