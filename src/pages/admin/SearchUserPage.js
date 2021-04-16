@@ -8,8 +8,9 @@ import { Container, FormControl } from 'react-bootstrap';
 import FormWrapper from '../../components/FormWrapper';
 import ListGroup from 'react-bootstrap/ListGroup';
 import _get from 'lodash.get';
+import { withRouter } from 'react-router-dom';
 
-export default class SearchUserPage extends React.Component {
+class SearchUserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +47,7 @@ export default class SearchUserPage extends React.Component {
     const foundUser = this.state.foundUser;
     const showDetail = (id) => {
       this.props.history.push({
-        pathname: '//admin/user/' + id
+        pathname: '/admin/user/:id' + id
       });
     }
     return(
@@ -69,8 +70,10 @@ export default class SearchUserPage extends React.Component {
           {foundUser.length !== 0
           ?<>
           <div>
-          <ListGroup.Item  action onClick={() => { showDetail(_get(foundUser, '[0].id')) }}>
-            {_get(foundUser, '[0].firstName')}</ListGroup.Item>
+          <ListGroup.Item  action onClick={() => { showDetail(_get(foundUser, '[0]._id')) }}>
+            {_get(foundUser, '[0].firstName')}&nbsp;{_get(foundUser, '[0].lastName')}<br></br>
+            {_get(foundUser, '[0].email')}    
+             </ListGroup.Item>
           </div>
           </>
           :<></>}
@@ -79,3 +82,4 @@ export default class SearchUserPage extends React.Component {
     );
   }
 }
+export default withRouter(SearchUserPage);

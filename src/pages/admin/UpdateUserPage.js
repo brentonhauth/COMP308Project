@@ -1,12 +1,13 @@
-import '../styles/signup.css'
+import '../../styles/signup.css'
 
 import React from 'react';
 import { updateUser } from '../../api/Admin';
 import FormWrapper from '../../components/FormWrapper';
 import Toast from '../../helpers/Toast';
 import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default class UpdateUserPage extends React.Component {
+class UpdateUserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +18,7 @@ export default class UpdateUserPage extends React.Component {
 
   async tryUpdate(data) {
     try {
-      const value = await updateUser(data);
+      const value = await updateUser(this.props._id,data);
       Toast.success('SUCCESS');
       this.setState({ successful: true });
     } catch (err) {
@@ -85,10 +86,11 @@ export default class UpdateUserPage extends React.Component {
               <input type="password" placeholder="*******" name="password" required/>
             </p>
             
-            <button disabled={sending} type="submit">Sign Up</button>
+            <button disabled={sending} type="submit">Update</button>
           </>}
         </FormWrapper>
       </div>
     );
   }
 }
+export default withRouter(UpdateUserPage);
