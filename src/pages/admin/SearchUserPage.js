@@ -10,7 +10,9 @@ import { Container } from 'react-bootstrap';
 export default class SearchUserPage extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+
+      };
     }
     render()
     {
