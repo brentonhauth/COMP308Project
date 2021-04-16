@@ -23,7 +23,7 @@ function NavBar(props) {
       <RBNavbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           {role === 'U' ? <>
-            <Link to={'/profile'} className="nav-link">Profile</Link>
+            <Link to="/profile" className="nav-link">Profile</Link>
             <Link to="/login" className="nav-link" onClick={onLogoutClick}>Logout</Link>
             <Link to="/groups" className="nav-link">Groups</Link>
             <Link to="/challenges" className="nav-link">Challenges</Link>

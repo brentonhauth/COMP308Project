@@ -7,12 +7,14 @@ import GroupDetailPage from "../pages/group/GroupDetailPage";
 import PasswordResetPage from '../pages/PasswordResetPage';
 import ChallengeListPage from '../pages/challenge/ChallengeListPage';
 import ChallengeDetailPage from '../pages/challenge/ChallengeDetailPage';
+import ProfilePage from "../pages/ProfilePage";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <NavBar />
       <Route path="/login" exact component={() => <LoginPage />} />
+      <Route path="/profile" exact component={() => <ProfilePage />} />
       <Route path="/signup" exact component={() => <SignupPage />} />
       <Route path="/groups" exact component={() => <GroupListPage />} />
       <Route path="/groups/:id" exact component={() => <GroupDetailPage />} />

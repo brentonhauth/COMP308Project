@@ -24,6 +24,11 @@ export async function touch() {
   return res;
 }
 
+export async function sendFitData(data) {
+  const res = await Request.post('/account/fitdata', data);
+  return res;
+}
+
 export async function getQuestions(email) {
   const res = await Request.get(`/account/questions?email=${email}`);
   return res;
