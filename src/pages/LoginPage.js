@@ -39,9 +39,9 @@ class LoginPage extends React.Component {
           <hr></hr>
           <FormWrapper onSubmit={this.tryLogin}>
             {sending => <>
-              <Form.Control type="email" placeholder="Email" name="email" required />
-              <Form.Control type="password" placeholder="Password" name="password" required />
-              <Button variant="success" type="submit" disabled={sending}>Login</Button>
+              <Form.Control type="email" className="rounded-pill my-3" placeholder="Email" name="email" required />
+              <Form.Control type="password" className="rounded-pill my-3" placeholder="Password" name="password" required />
+              <Button variant="success" type="submit" className="rounded-pill mt-2 w-100" disabled={sending}>Login</Button>
             </>}
           </FormWrapper>
           <Link to="/passreset">Forgot password?</Link>
