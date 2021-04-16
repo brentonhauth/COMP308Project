@@ -15,28 +15,31 @@ class UpdateUserPage extends React.Component {
         user:{}
     };
     this.tryUpdate = this.tryUpdate.bind(this);
+  }
+
+  componentDidMount() {
     const fetchData = async () => {
-        try
-        {
-            //console.log(props);
-            const foundUser = await api.searchUserById(props.match.params.id);
-            this.setState({
-              user: foundUser
-            });
-            console.log(foundUser);
-        }
-        catch(e)
-        {
-            Toast.error(e);
-            console.log(e);
-        }
-      };
-      fetchData();
+      try
+      {
+          //console.log(props);
+          const foundUser = await api.searchUserById(this.props.id);
+          this.setState({
+            user: foundUser
+          });
+          console.log(foundUser);
+      }
+      catch(e)
+      {
+          Toast.error(e);
+          console.log(e);
+      }
+    };
+    fetchData();
   }
 
   async tryUpdate(data) {
     try {
-      const value = await updateUser(this.props._id,data);
+      const value = await updateUser(this.props.id,data);
       Toast.success('SUCCESS');
       this.setState({ successful: true });
     } catch (err) {
