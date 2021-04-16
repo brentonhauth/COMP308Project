@@ -31,6 +31,11 @@ function NavBar(props) {
             <Link to="/signup" className="nav-link">Signup</Link>
             <Link to="/login" className="nav-link">Login</Link>
           </>}
+          {role === 'A' ? <>
+          <Link to="/searchUser" className="nav-link">Search User</Link>
+          </>
+          :<></>
+          }
         </Nav>
       </RBNavbar.Collapse>
     </RBNavbar>
