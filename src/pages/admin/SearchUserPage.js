@@ -6,13 +6,15 @@ import Loading from '../../components/Loading';
 import Toast from '../../helpers/Toast';
 import { Container, FormControl } from 'react-bootstrap';
 import FormWrapper from '../../components/FormWrapper';
+import ListGroup from 'react-bootstrap/ListGroup';
+import _get from 'lodash.get';
 
 export default class SearchUserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       // Set to empty object
-      foundUser: {}
+      foundUser: []
     };
 
     /*
@@ -42,7 +44,11 @@ export default class SearchUserPage extends React.Component {
   render() {
     // Unpack from state (easier to read)
     const foundUser = this.state.foundUser;
-
+    const showDetail = (id) => {
+      this.props.history.push({
+        pathname: '//admin/user/' + id
+      });
+    }
     return(
       <EnsureLoggedIn message="You are not an admin">
         <Container>
@@ -59,11 +65,12 @@ export default class SearchUserPage extends React.Component {
           </FormWrapper>
 
           {/* Display 'foundUser' how you like, I've used JSON.stringify as a temporary solution */}
-          {<div>{JSON.stringify(foundUser)}</div>}
+          {/* {<div>{JSON.stringify(foundUser)}</div>} */}
           {foundUser.length !== 0
           ?<>
           <div>
-            EMAILLLL:{JSON.stringify(foundUser)}{/*It's undefined somehow....*/}
+          <ListGroup.Item  action onClick={() => { showDetail(_get(foundUser, '[0].id')) }}>
+            {_get(foundUser, '[0].firstName')}</ListGroup.Item>
           </div>
           </>
           :<></>}
