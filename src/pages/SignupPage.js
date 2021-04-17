@@ -53,36 +53,32 @@ export default class SignupPage extends React.Component {
               <input type="text" placeholder="someone@example.com" name="email" required/>
             </p>
             <hr></hr>
-            <p className="tableSection">
-              Account Information
-            </p>
-            <p className="double">
-              <label htmlFor="studentNumber" className="floatLabel" type="text">Student Number</label>                
-              <input type="text" placeholder="300941374" name="studentNumber" required/>
-
-              <label htmlFor="program" className="floatLabel" type="text">Program</label>                
-              <input type="text" placeholder="Game Programming" name="program" required/>
+            <p>
+              <label htmlFor="height" className="floatLabel" type="text">Height(CM)</label>                
+              <input type="number" placeholder="180" name="height" required/>
             </p>
             <p>
-              <label htmlFor="phone" className="floatLabel" type="text">Phone</label>                
-              <input type="text" placeholder="1111234567" name="phone" required/>
+              <label htmlFor="waist" className="floatLabel" type="text">Waist(KG)</label>                
+              <input type="number" placeholder="80" name="waist" required/>
             </p>
             <hr></hr>
             <p className="tableSection">
-              Address
+              Age
             </p>
             <p className="double">
-              <label htmlFor="address" className="floatLabel" type="text">Address</label>                
-              <input type="text" placeholder="47 Some Street" name="address" required/>
+              <label htmlFor="age" className="floatLabel" type="text">Age</label>                
+              <input type="number" placeholder="" name="age" required/>
 
-              <label htmlFor="city" className="floatLabel" type="text">City</label>                
-              <input type="text" placeholder="Toronto" name="city" required/>
+              <label htmlFor="gender" className="floatLabel" type="text">Gender</label>                
+              <select name="gender" id="gender">
+              <option value= 'M'>Male</option>
+              <option value='F'>Female</option>
+              </select>
             </p>
             <p>
               <label htmlFor="password" className="floatLabel" type="text">Password</label>                
               <input type="password" placeholder="*******" name="password" required/>
             </p>
-            
             <button disabled={sending} type="submit">Sign Up</button>
           </>}
         </FormWrapper>
