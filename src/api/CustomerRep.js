@@ -21,3 +21,12 @@ export async function getAllRewards() {
   const res = await Request.get('/cusrep/rewards');
   return res;
 }
+export async function getReward(cid) {
+  return Request.get(`/cusrep/reward/${cid}`);
+}
+export async function createReward(data) {
+  return Request.post('/cusrep/reward/create', data);
+}
+export async function updateReward(cid, data) {
+  return Request.post(`/cusrep/reward/${cid}`, data);
+}
