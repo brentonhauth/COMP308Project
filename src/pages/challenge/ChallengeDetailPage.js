@@ -8,22 +8,66 @@ import Loading from '../../components/Loading';
 import Toast from '../../helpers/Toast';
 import { Container } from 'react-bootstrap';
 import RewardCard from '../../components/RewardCard';
+import _get from 'lodash.get';
+
+
+function ParticipantBlock({ participant, challenge }={}) {
+  const id = _get(participant, '_id', null);
+  if (!id) {
+    return null;
+  }
+
+  const percent = (participant.progress / challenge.distance * 100).toFixed(2);
+
+  console.log(participant);
+
+  return (
+    <Container className="w-75">
+      <h4>Progress</h4>
+      <h5>{participant.progress} KM&emsp;({percent}%)</h5>
+      <div className="w-100 text-right">
+        {/* <span className="display-block mr-0">
+          </span> */}
+          {/* <div className="text-right"
+          style={{
+            width: `${Math.min(percent, 90)}%`
+          }}>
+            {participant.progress} */}
+          {/* </div> */}
+          {challenge.distance} KM
+      </div>
+      <div className="w-100 bg-primary rounded-pill">
+        <div
+        className="mr-0 bg-success rounded-pill"
+        style={{
+          height: '25px',
+          width:`${percent}%`
+        }}></div>
+      </div>
+    </Container>
+  );
+  
+}
+
 
 class $ChallengeDetailPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       fetching: true,
+      participant: null,
       challenge: null,
     };
     this.tryGettingChallenge = this.tryGettingChallenge.bind(this);
+    this.tryGettingProgress = this.tryGettingProgress.bind(this);
   }
 
   componentDidMount() {
     this.tryGettingChallenge();
+    this.tryGettingProgress();
   }
   
-  tryGettingChallenge() {
+  async tryGettingChallenge() {
     const id = this.props.id;
     api.getChallenge(id).then(challenge => {
       this.setState({ fetching: false, challenge });
@@ -33,8 +77,15 @@ class $ChallengeDetailPage extends React.Component {
     });
   }
 
+  async tryGettingProgress() {
+    const id = this.props.id;
+    return api.getChallengeProgress(id).then(participant => {
+      this.setState({ participant });
+    }).catch(x=>x);
+  }
+
   render() {
-    const { fetching, challenge } = this.state;
+    const { fetching, challenge, participant } = this.state;
     if (fetching) {
       return <Loading />
     } else if (!challenge) {
@@ -46,6 +97,7 @@ class $ChallengeDetailPage extends React.Component {
       <Container>
         <ChallengeCard challenge={challenge} />
         <RewardCard reward={challenge.reward} />
+        <ParticipantBlock participant={participant} challenge={challenge} />
       </Container>
     );
   }
