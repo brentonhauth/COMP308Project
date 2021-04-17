@@ -70,7 +70,7 @@ class UpdateUserPage extends React.Component {
             </p>
             <p>
               <label htmlFor="email" className="floatLabel" type="text">Email</label>                
-              <input type="text" defaultValue={user.email} name="email" required/>
+              <input type="text" defaultValue={user.email} name="email" disabled/>
             </p>
             <p>
               <label htmlFor="role" className="floatLabel" type="text">Role</label>                
