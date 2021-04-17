@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.5cd084da.chunk.css",
-    "main.js": "/static/js/main.c3fea973.chunk.js",
-    "main.js.map": "/static/js/main.c3fea973.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.c5274adb.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c5274adb.js.map",
-    "static/css/2.decc9e32.chunk.css": "/static/css/2.decc9e32.chunk.css",
-    "static/js/2.10157020.chunk.js": "/static/js/2.10157020.chunk.js",
-    "static/js/2.10157020.chunk.js.map": "/static/js/2.10157020.chunk.js.map",
-    "static/js/3.a57f77fc.chunk.js": "/static/js/3.a57f77fc.chunk.js",
-    "static/js/3.a57f77fc.chunk.js.map": "/static/js/3.a57f77fc.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.decc9e32.chunk.css.map": "/static/css/2.decc9e32.chunk.css.map",
-    "static/css/main.5cd084da.chunk.css.map": "/static/css/main.5cd084da.chunk.css.map",
-    "static/js/2.10157020.chunk.js.LICENSE.txt": "/static/js/2.10157020.chunk.js.LICENSE.txt"
+    "main.css": "/COMP308Project/static/css/main.5cd084da.chunk.css",
+    "main.js": "/COMP308Project/static/js/main.8a070a79.chunk.js",
+    "main.js.map": "/COMP308Project/static/js/main.8a070a79.chunk.js.map",
+    "runtime-main.js": "/COMP308Project/static/js/runtime-main.855c9601.js",
+    "runtime-main.js.map": "/COMP308Project/static/js/runtime-main.855c9601.js.map",
+    "static/css/2.decc9e32.chunk.css": "/COMP308Project/static/css/2.decc9e32.chunk.css",
+    "static/js/2.141b8256.chunk.js": "/COMP308Project/static/js/2.141b8256.chunk.js",
+    "static/js/2.141b8256.chunk.js.map": "/COMP308Project/static/js/2.141b8256.chunk.js.map",
+    "static/js/3.a57f77fc.chunk.js": "/COMP308Project/static/js/3.a57f77fc.chunk.js",
+    "static/js/3.a57f77fc.chunk.js.map": "/COMP308Project/static/js/3.a57f77fc.chunk.js.map",
+    "index.html": "/COMP308Project/index.html",
+    "static/css/2.decc9e32.chunk.css.map": "/COMP308Project/static/css/2.decc9e32.chunk.css.map",
+    "static/css/main.5cd084da.chunk.css.map": "/COMP308Project/static/css/main.5cd084da.chunk.css.map",
+    "static/js/2.141b8256.chunk.js.LICENSE.txt": "/COMP308Project/static/js/2.141b8256.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c5274adb.js",
+    "static/js/runtime-main.855c9601.js",
     "static/css/2.decc9e32.chunk.css",
-    "static/js/2.10157020.chunk.js",
+    "static/js/2.141b8256.chunk.js",
     "static/css/main.5cd084da.chunk.css",
-    "static/js/main.c3fea973.chunk.js"
+    "static/js/main.8a070a79.chunk.js"
   ]
 }
