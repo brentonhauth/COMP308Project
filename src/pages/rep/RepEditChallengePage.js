@@ -10,6 +10,7 @@ import * as api from '../../api/CustomerRep';
 import Toast from '../../helpers/Toast';
 import moment from 'moment';
 import Loading from '../../components/Loading';
+import _get from 'lodash.get';
 
 const CREATE = 'create';
 const FORMAT = "YYYY-MM-DD";
@@ -82,6 +83,9 @@ class $RepEditChallengePage extends React.Component {
     }
 
     const closes = this.formatDate(challenge.closes);
+    const rewardId = typeof challenge.reward === 'string' ?
+      challenge.reward : _get(challenge, 'reward._id', '');
+    //
 
     return (
       <Container>
@@ -96,8 +100,8 @@ class $RepEditChallengePage extends React.Component {
             <FormControl defaultValue={closes} name="closes" type="date" required />
             <FormLabel>State</FormLabel>
             <FormControl defaultValue={challenge.state || 'A'} name="state" required />
-            {/* <FormLabel>State</FormLabel>
-            <FormControl defaultValue={} name="reward" required /> */}
+            <FormLabel>Reward</FormLabel>
+            <FormControl defaultValue={rewardId} type="text" name="reward" />
             <FormLabel>Description</FormLabel>
             <FormControl defaultValue={challenge.description} as="textarea" name="description" required />
             <Button type="submit" variant="success" disabled={sending}>
