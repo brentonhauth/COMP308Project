@@ -41,6 +41,7 @@ function NavBar(props) {
             <Link to="/profile" className="nav-link">Profile</Link>
             <Link to="/groups" className="nav-link">Groups</Link>
             <Link to="/challenges" className="nav-link">Challenges</Link>
+            <Link to="/workouts" className="nav-link">Workouts</Link>
           
           </> : role === UserRole.ADMIN ? <>
             <Link to="/searchUser" className="nav-link">Search User</Link>

@@ -16,6 +16,7 @@ import RepEditChallengePage from "../pages/rep/RepEditChallengePage";
 import RepRewardListPage from "../pages/rep/RepRewardListPage";
 import RepEditRewardPage from "../pages/rep/RepEditRewardPage";
 import IndexPage from "../pages/IndexPage";
+import WorkoutPage from "../pages/workout/WorkoutPage";
 
 export default function Router() {
   return (
@@ -23,6 +24,7 @@ export default function Router() {
       <NavBar />
       <Route path="/" exact component={() => <IndexPage />} />
       <Route path="/login" exact component={() => <LoginPage />} />
+      <Route path="/workouts" exact component={() => <WorkoutPage />} />
       <Route path="/profile" exact component={() => <ProfilePage />} />
       <Route path="/signup" exact component={() => <SignupPage />} />
       <Route path="/groups" exact component={() => <GroupListPage />} />

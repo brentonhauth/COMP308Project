@@ -79,6 +79,16 @@ export default class SignupPage extends React.Component {
               <label htmlFor="password" className="floatLabel" type="text">Password</label>                
               <input type="password" placeholder="*******" name="password" required/>
             </p>
+            <p>
+              <label>Question 1</label>
+              <input type="text" name="question1" placeholder="Favorite food?" required />
+              <label>Answer 1</label>
+              <input type="text" name="answer1" placeholder="Answer #1" required />
+              <label>Question 2</label>
+              <input type="text" name="question2" placeholder="First pets name?" required />
+              <label>Answer 2</label>
+              <input type="text" name="answer2" placeholder="Answer #2" required />
+            </p>
             <button disabled={sending} type="submit">Sign Up</button>
           </>}
         </FormWrapper>
