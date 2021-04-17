@@ -9,6 +9,7 @@ export async function updateUser(userId, body)
 {
     console.log(body);
     const res = await Request.post('/admin/user/' + userId, body);
+    console.log(res);
     return res;
 }
 export async function searchUserById(userId,body) {
