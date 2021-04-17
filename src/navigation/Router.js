@@ -15,11 +15,13 @@ import RepChallengeListPage from "../pages/rep/RepChallengeListPage";
 import RepEditChallengePage from "../pages/rep/RepEditChallengePage";
 import RepRewardListPage from "../pages/rep/RepRewardListPage";
 import RepEditRewardPage from "../pages/rep/RepEditRewardPage";
+import IndexPage from "../pages/IndexPage";
 
 export default function Router() {
   return (
     <BrowserRouter>
       <NavBar />
+      <Route path="/" exact component={() => <IndexPage />} />
       <Route path="/login" exact component={() => <LoginPage />} />
       <Route path="/profile" exact component={() => <ProfilePage />} />
       <Route path="/signup" exact component={() => <SignupPage />} />
