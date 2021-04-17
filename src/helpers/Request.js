@@ -18,7 +18,8 @@ const headers = {
 const instance = axios.create({
   baseURL: config.API_URL,
   responseType: 'json',
-  params: { web: true }
+  params: { web: true },
+  withCredentials: true,
 });
 
 
