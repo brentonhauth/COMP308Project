@@ -5,11 +5,15 @@ import _get from 'lodash.get';
 
 import * as api from '../api/Challenge';
 import Toast from '../helpers/Toast';
+import YouTubeVideo from './YouTubeVideo';
 
 export default class ActivityCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { disableParticipate: false };
+    this.state = {
+      disableParticipate: false,
+      watchVideo: false,
+    };
     this.tryParticipate = this.tryParticipate.bind(this);
   }
 
@@ -52,8 +56,8 @@ export default class ActivityCard extends React.Component {
           <Card.Body>
             {activity.description}
             <br></br>
-            {activity.hyperlink &&
-            <a className="btn btn-success" href={activity.hyperlink} target="_blank">Watch Video</a>}
+            {activity.hyperlink}
+            {<YouTubeVideo hyperlink={activity.hyperlink} />}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
